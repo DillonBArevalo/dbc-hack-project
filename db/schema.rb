@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325180658) do
+ActiveRecord::Schema.define(version: 20170325230819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,8 @@ ActiveRecord::Schema.define(version: 20170325180658) do
     t.integer  "issue_id"
     t.text     "description"
     t.integer  "user_id"
-    t.integer  "instructor_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["instructor_id"], name: "index_comments_on_instructor_id", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["issue_id"], name: "index_comments_on_issue_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
@@ -35,14 +33,6 @@ ActiveRecord::Schema.define(version: 20170325180658) do
     t.index ["owner_id"], name: "index_groups_on_owner_id", using: :btree
   end
 
-  create_table "instructors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
   create_table "issues", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -50,15 +40,6 @@ ActiveRecord::Schema.define(version: 20170325180658) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_issues_on_user_id", using: :btree
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer  "group_id"
-    t.integer  "instructor_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["group_id"], name: "index_memberships_on_group_id", using: :btree
-    t.index ["instructor_id"], name: "index_memberships_on_instructor_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,12 +50,10 @@ ActiveRecord::Schema.define(version: 20170325180658) do
     t.integer  "group_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "is_instructor"
     t.index ["group_id"], name: "index_users_on_group_id", using: :btree
   end
 
-  add_foreign_key "comments", "instructors"
   add_foreign_key "comments", "issues"
   add_foreign_key "comments", "users"
-  add_foreign_key "memberships", "groups"
-  add_foreign_key "memberships", "instructors"
 end
