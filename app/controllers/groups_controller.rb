@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
       @group.owner = current_user.id
 
       if @group.save
+        current_user.group = @group.id
         redirect_to @group
       else
         flash[:notice] = 'Could not save group.'
@@ -57,6 +58,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:instructor).permit(:name)
+    params.require(:group).permit(:name)
   end
 end
