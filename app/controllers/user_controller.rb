@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  include SessionsHelper
-
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -22,7 +20,7 @@ class UsersController < ApplicationController
     if user_params[:password] == user_params[:password_confirmation]
       if @user.save
         session[:id] = @user.id
-         flash[:notice] =  'User successfully created.'
+        flash[:notice] =  'User successfully created.'
       else
         render :new
       end
@@ -43,8 +41,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-      flash[:notice] = 'User successfully deleted.'
-      redirect_to rides_path
+    flash[:notice] = 'User successfully deleted.'
+    redirect_to new_user_path
   end
 
   private

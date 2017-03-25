@@ -44,7 +44,7 @@ class InstructorsController < ApplicationController
   def destroy
     @instructor.destroy
       flash[:notice] = 'Instructor successfully deleted.'
-      redirect_to rides_path
+      redirect_to instructors_path
   end
 
   private
