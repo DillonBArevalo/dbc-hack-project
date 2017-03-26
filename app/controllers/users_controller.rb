@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user = user.find(params[:id])
-    erb :'users/show'
+    @user = User.find(params[:id])
   end
 
   def new
@@ -13,7 +12,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    erb :'users/edit'
+    
   end
 
   def create

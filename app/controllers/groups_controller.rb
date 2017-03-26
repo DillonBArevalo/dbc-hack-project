@@ -40,6 +40,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+
     @group = Group.find(params[:id])
 
     @issues = @group.issues
@@ -47,7 +48,9 @@ class GroupsController < ApplicationController
 
   def edit
 
+
   end
+
 
   def update
     if @group.update(group_params)

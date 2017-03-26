@@ -1,38 +1,42 @@
-<div class="nav-wrapper">
-   <ul id="nav-mobile" class="left">
+<nav class="nav-wrapper" role="navigation" style="background-color: #c7d8c6; color:black;">
+   <ul id="nav" class="left">
+   <div class="row">
+     <% if current_user %>
 
-   <% if current_user %>
+       <li>
+         <%= link_to('Hi, '+ current_user.username, user_path(current_user))  %>
+       </li>
 
-     <li>
-       <%= link_to('Hi, '+ current_user.username, user_path(current_user))  %>
-     </li>
+     <% end %>
 
-   <% end %>
+       <li>
+         <%= link_to('Home', root_path) %>
+       </li>
 
-     <li>
-       <%= link_to('Home', root_path) %>
-     </li>
+     <% if !current_user %>
 
-   <% if !current_user %>
+       <li>
+         <%= link_to('Register', new_user_path)%>
+       </li>
+       <li>
+         <%= form_for(:session, url: login_path, method: :post) do |f| %>
+          <div class="col s4" style="color: black;"><%= f.text_field :email, placeholder: 'Email' %></div>
+          <div class="col s4"><%= f.text_field :password, placeholder: 'Password' %></div>
+          <div class="col s4"><%= f.submit value: 'Login' %></div>
+         <% end %>
+       </li>
 
-     <li>
-       <%= link_to('Register', new_user_path)%>
-     </li>
-     <li>
-       <%= form_for(:session, url: login_path, method: :post) do |f| %>
-        <%= f.text_field :email, placeholder: 'Email' %>
-        <%= f.text_field :password, placeholder: 'Password' %>
-        <%= f.submit value: 'Login' %>
-       <% end %>
-     </li>
-
-   <% else%>
+     <% else%>
 
 
-     <li>
-       <%= link_to('Logout', logout_path) %>
-     </li>
+      
+       <li><%= link_to "Logout", logout_path %></li>
+       
 
-   <% end %>
+     <% end %>
+    </div>
    </ul>
- </div>
+ </nav>
+
+
+ 

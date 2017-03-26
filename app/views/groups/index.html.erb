@@ -1,13 +1,15 @@
-<div class="center">
-	<h1>Find a Group</h1>
-</div>
 
 <div class="container z-depth-5" style="background-color: #c7d8c6; border-radius: 15px;">
+	<div style="padding-left: 50px">
+		<h1>Find a Group</h1>
+	</div>
 	<ul>
 		<% @groups.each do |group| %>
 			<div class="container">	
 				<br>
+				<div id="radius-border" class="z-depth-5" style="padding: 20px; background-color: #efd9c1;">
 					<center><li><h3><%= link_to group.name, group %></h3></li></center>
+				</div>
 				</br>
 			</div>
 		<% end %>
