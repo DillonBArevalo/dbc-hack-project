@@ -1,0 +1,16 @@
+<h2><%= @group.name %></h2>
+
+<p>Group Owner: <%= @group.owner_id %><br>
+Email: <%= @user.email %><br>
+Phone: <%= @user.phone %></p>
+<br>
+<% @group.issues.each do |issue| %>
+<ul>
+	<li><%= issue.title %></li>
+  <li><%= issue.description %></li>
+  <li><%= issue.user.name %></li>
+</ul>
+
+<%= link_to new_issue_path %>
+
+<% end %>
