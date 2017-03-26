@@ -1,0 +1,12 @@
+
+<h1><%= @issue.title %></h1>
+<br>
+<p><%= @issue.decriptions %></p>
+
+<% @issue.comments.each do |comments| %>
+<ul>
+
+	<li><%= comment %></li>
+</ul>
+<% end %>
+
