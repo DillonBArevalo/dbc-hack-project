@@ -1,6 +1,15 @@
+<div class="center">
+	<h1>Find a Group</h1>
+</div>
 
-<% @groups.each do |group| %>
-<ul>
-	<li><%= group.name %></li>
-</ul>
-<% end %>
+<div class="container z-depth-5" style="background-color: #c7d8c6; border-radius: 15px;">
+	<ul>
+		<% @groups.each do |group| %>
+			<div class="container">	
+				<br>
+					<center><li><h3><%= link_to group.name, group %></h3></li></center>
+				</br>
+			</div>
+		<% end %>
+	</ul>
+</div>
