@@ -1,13 +1,9 @@
-<div class ="container" style="border: thin solid black">
+<%= form_for(@issue) do |f| %>
+	<%= f.label :title %>:
+  <%= f.text_field :title %><br />
 
-<form id = "new_issue_form" method="POST" action="/issues">
-	<br>
-	Title: <input type="text" name="group[title]" placeholder=" Title" />
-	<br>
-	Description: <input type="text" name="group[description]" placeholder=" Description" />
-	<br>
- <input type="submit" value ='Submit Issue'/>
+ 	<%= f.label :description %>:
+  <%= f.text_field :description %><br />
 
-</form>
-<br>
-</div>
+ 	<%= f.submit %>
+<% end %>
