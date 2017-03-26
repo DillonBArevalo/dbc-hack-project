@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    render :index
   end
 
   def new
@@ -39,10 +40,17 @@ class GroupsController < ApplicationController
   end
 
   def show
+
+    @group = Group.find(params[:id])
+
+    @issues = @group.issues
   end
 
   def edit
+
+
   end
+
 
   def update
     if @group.update(group_params)
