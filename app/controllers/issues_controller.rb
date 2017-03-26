@@ -9,7 +9,7 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new
 
-    if current_user
+    if current_user 
       @issue.user = current_user
 
       if @issue.save
