@@ -1,12 +1,10 @@
-<h2>User Profile</h2>>
+<h2>User Profile</h2>
 
-<p>Name: <%= @user.username %><br>
+<p>Name: <%= @user.name %><br>
 Email: <%= @user.email %><br>
 Phone: <%= @user.phone %></p>
 <br>
-<% @user.groups.each do |group| %>
-<ul>
 
-	<li><%= group %></li>
+<ul>
+	<li><%= link_to(@user.group.name, @user.group) %></li>
 </ul>
-<% end %>
