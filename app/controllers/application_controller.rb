@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def index
-    render '/index.html.erb'
+    render :index
   end
 end
