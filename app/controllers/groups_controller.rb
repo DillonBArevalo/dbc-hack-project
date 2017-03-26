@@ -39,11 +39,12 @@ class GroupsController < ApplicationController
   end
 
   def show
-
+     @group = group.find(params[:id])
+    erb :'groups/show'
   end
 
   def edit
-
+     erb :'groups/edit'
   end
 
   def update

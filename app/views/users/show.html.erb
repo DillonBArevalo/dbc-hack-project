@@ -1,0 +1,12 @@
+<h2>User Profile</h2>>
+
+<p>Name: <%= @user.username %><br>
+Email: <%= @user.email %><br>
+Phone: <%= @user.phone %></p>
+<br>
+<% @user.groups.each do |group| %>
+<ul>
+
+	<li><%= group %></li>
+</ul>
+<% end %>
