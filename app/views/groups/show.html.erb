@@ -1,10 +1,16 @@
+<h2><%= @group.name %></h2>
+
+<p>Group Owner: <%= @group.owner_id %><br>
+Email: <%= @user.email %><br>
+Phone: <%= @user.phone %></p>
 <br>
-<center>
-	
-	<div id="border" style="width: 75%; background-color: #c7d8c6">
-		<h1><%= @group.name %></h1>
-	</div>
-</center>
-<% @issues.each do |issue|%>
-<%= issue %>
+<% @group.issues.each do |issue| %>
+<ul>
+	<li><%= issue.title %></li>
+  <li><%= issue.description %></li>
+  <li><%= issue.user.name %></li>
+</ul>
+
+<%= link_to new_issue_path %>
+
 <% end %>
