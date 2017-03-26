@@ -1,19 +1,15 @@
-<div class ="container" style="border: thin solid black">
+<%= form_for(@user) do |f| %>
+ 	<%= f.label :name %>:
+  <%= f.text_field :name %><br />
 
-<form id = "new_user_form" method="POST" action="/users">
-	<br>
-	Username: <input type="text" name="user[username]" placeholder=" Username" />
-	<br>
- Email Address:<input type="text" name="user[email]" placeholder=" Email" />
-	<br>
- Phone Number:<input type="text" name="user[phone]" placeholder=" Phone Number" />
-	<br>
- Password <input type="password" name="user[password]" placeholder=" Password" />
+ 	<%= f.label :phone %>:
+ 	<%= f.text_field :phone %><br />
 
- <br>
+ 	<%= f.label :email %>:
+  <%= f.text_field :email%><br />
 
- <input type="submit" value ='Save Profile'/>
+ 	<%= f.label :password %>:
+ 	<%= password_field_tag :password%><br />
 
-</form>
-<br>
-</div>
+ 	<%= f.submit %>
+<% end %>

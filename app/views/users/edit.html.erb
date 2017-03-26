@@ -1,18 +1,15 @@
 <h2>Edit</h2>
-<div class ="container" style="border: thin solid black">
 
-<form id = "new_user_form" method="POST" action="/users">
-	<br>
-	Username: <input type="text" name="user[username]" value= <%= user.username %> />
-	<br>
- Email Address:<input type="text" name="user[email]" value= <%= user.email %> />
-	<br>
- Phone Number:<input type="text" name="user[phone]" value= <%= user.phone %> />
-	<br>
+<%= form_for(@user) do |f| %>
+ 	<%= f.label :name %>:
+  <%= f.text_field :name %><br />
 
- <input type="submit" value ='Save Profile'/>
+ 	<%= f.label :phone %>:
+ 	<%= f.text_field :phone %><br />
 
-</form>
-<br>
-</div>
+ 	<%= f.label :email %>:
+  <%= f.text_field :email%><br />
+
+ 	<%= f.submit %>
+<% end %>
 
