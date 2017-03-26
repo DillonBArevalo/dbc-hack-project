@@ -8,20 +8,31 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+
+    if current_user && current_user.is_instructor
+      flash[:notice] = 'Instructors cannot create groups.'
+      redirect_to index
+    elsif current_user
+      render :new
+    end
   end
 
   def create
     @group = Group.new
 
-    if current_user
+    if current_user && !current_user.is_instructor
       @group.owner = current_user.id
 
       if @group.save
+        current_user.group = @group.id
         redirect_to @group
       else
         flash[:notice] = 'Could not save group.'
         redirect_to new_group_path
       end
+    elsif current_user && current_user.is_instructor
+        flash[:notice] = 'Instructors cannot create groups.'
+        redirect_to index
     else
       redirect_to new_session_path
     end
@@ -58,6 +69,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:instructor).permit(:name)
+    params.require(:group).permit(:name)
   end
 end
